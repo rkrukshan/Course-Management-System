@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>HTML Education Template</title>
+    <title>Yarl IT</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
 
 
@@ -47,11 +47,11 @@
         <!-- Navigation -->
         <nav id="nav">
             <ul class="main-menu nav navbar-nav navbar-right">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li><a href="{{ url('/about') }}">About</a></li>
+                <li><a href="{{ url('/course') }}">Courses</a></li>
+                <li><a href="{{ url('/blog') }}">Blog</a></li>
+                <li><a href="{{ url('/contact') }}">Contact</a></li>
             </ul>
         </nav>
         <!-- /Navigation -->
@@ -74,7 +74,7 @@
             <!-- footer logo -->
             <div class="col-md-6">
                 <div class="footer-logo">
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="{{ url('/') }}">
                         <img src="{{ asset('./img/logo.png') }}" alt="logo">
                     </a>
                 </div>
@@ -84,11 +84,11 @@
             <!-- footer nav -->
             <div class="col-md-6">
                 <ul class="footer-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/about') }}">About</a></li>
+                    <li><a href="{{ url('/course') }}">Courses</a></li>
+                    <li><a href="{{ url('/blog') }}">Blog</a></li>
+                    <li><a href="{{ url('/contact') }}">Contact</a></li>
                 </ul>
             </div>
             <!-- /footer nav -->
@@ -133,7 +133,9 @@
 
 
 <!-- preloader -->
-<div id='preloader'><div class='preloader'></div></div>
+<div id='preloader'>
+    <div class='preloader'></div>
+</div>
 <!-- /preloader -->
 
 
