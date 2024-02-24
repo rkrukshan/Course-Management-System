@@ -2,7 +2,7 @@
 @section('body')
     <div class="container-fluid">
 
-        <form action="{{ route('student.store') }}" method="POST">
+        <form action="{{ route('student.edit') }}" method="POST">
             @csrf
             <div class="container">
                 <h1 class="h1 text-center">Student</h1>
