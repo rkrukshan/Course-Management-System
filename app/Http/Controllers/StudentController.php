@@ -14,17 +14,13 @@ class StudentController extends Controller
         return view('student.index', compact('students'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('student.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -41,29 +37,21 @@ class StudentController extends Controller
         return redirect()->route('student.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
         $students = Student::find($id);
-        $students = Student::find($id)->students; //join Student with student
-        // dd($students);
-        return view('student.show', compact('students', 'students'));
+        return view('student.show', compact('students'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(string $id)
     {
         $students = Student::find($id);
         return view('student.edit', compact('students'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -81,9 +69,7 @@ class StudentController extends Controller
         return redirect()->route('student.index', compact('students'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
         Student::destroy($id);

@@ -69,7 +69,7 @@
 		@yield('body')
 
 					<!-- footer logo -->
-					<div class="col-md-6">
+					<div class="col-md-6 pt-15">
 						<div class="footer-logo">
 							<a class="logo" href="index.html">
 								<img src="{{ asset('./img/logo.png') }}" alt="logo">
@@ -79,7 +79,7 @@
 					<!-- footer logo -->
 
 					<!-- footer nav -->
-					<div class="col-md-6">
+					<div class="col-md-6 pt-15">
 						<ul class="footer-nav">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="#">About</a></li>

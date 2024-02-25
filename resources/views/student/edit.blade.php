@@ -111,6 +111,8 @@
             </table>
             <br>
             <a class="link-light"><button type="submit" class="btn btn-success">save</button></a>
+            <a class="link-light" href="{{route('student.index')}}"><button type="button" class="btn btn-secondary">Back</button></a>
+
                 
         </form>
     </div>
