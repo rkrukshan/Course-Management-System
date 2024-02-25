@@ -13,9 +13,9 @@ class StudentCourseController extends Controller
      */
     public function index()
     {
-        $studentcourses= StudentCourse::all();
+        $studentcourses = StudentCourse::all();
         // return $studentcourses;
-        return view("student-course.index",compact("studentcourses"));
+        return view("student-course.index", compact("studentcourses"));
     }
 
     /**
@@ -84,8 +84,7 @@ class StudentCourseController extends Controller
     }
     public function course(Request $request)
     {
-        $courses= Course::all();
-return view('course.create', compact(''));
+        $courses = Course::all();
+        return view('course.create', compact(''));
     }
-    
 }

@@ -54,10 +54,10 @@
 				<nav id="nav">
 					<ul class="main-menu nav navbar-nav navbar-right">
 						<li><a href="{{ url('/') }}">Home</a></li>
-						<li><a href="{{ url('/about') }}">About</a></li>
-						<li><a href="{{ url('/contact') }}">Contact</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+							<li><a href="{{ url('/student') }}">Student</a></li>
+							<li><a href="{{ url('/course') }}">Courses</a></li>
+							<li><a href="{{ url('/teacher') }}">teacher</a></li>
+							<li><a href="{{ url('/studentCourse') }}">studentCourse</a></li>
 					</ul>
 				</nav>
 				<!-- /Navigation -->
@@ -81,11 +81,11 @@
 					<!-- footer nav -->
 					<div class="col-md-6 pt-15">
 						<ul class="footer-nav">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Courses</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="{{ url('/') }}">Home</a></li>
+							<li><a href="{{ url('/student') }}">Student</a></li>
+							<li><a href="{{ url('/course') }}">Courses</a></li>
+							<li><a href="{{ url('/teacher') }}">teacher</a></li>
+							<li><a href="{{ url('/studentCourse') }}">studentCourse</a></li>
 						</ul>
 					</div>
 					<!-- /footer nav -->
