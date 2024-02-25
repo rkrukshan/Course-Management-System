@@ -46,10 +46,10 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        $Students = Student::find($id);
+        $students = Student::find($id);
         $students = Student::find($id)->students; //join Student with student
         // dd($students);
-        return view('student.show', compact('Students', 'students'));
+        return view('student.show', compact('students', 'students'));
     }
 
     /**
@@ -57,8 +57,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $Students = Student::find($id);
-        return view('student.edit', compact('Students'));
+        $students = Student::find($id);
+        return view('student.edit', compact('students'));
     }
 
     /**
@@ -76,9 +76,9 @@ class StudentController extends Controller
             'course_id' => 'required',
             'nic' => 'required',
         ]);
-        $Students = Student::find($id);
-        $Students->update($request->all());
-        return redirect()->route('student.index', compact('Students'));
+        $students = Student::find($id);
+        $students->update($request->all());
+        return redirect()->route('student.index', compact('students'));
     }
 
     /**

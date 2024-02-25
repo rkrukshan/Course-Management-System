@@ -17,20 +17,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($students as $student)
+            
                 <tr>
-                    <td>{{ $student->admission_no }}</td>
-                    <td>{{ $student->first_name }}</td>
-                    <td>{{ $student->last_name }}</td>
-                    <td>{{ $student->gender }}</td>
-                    <td>{{ $student->address }}</td>
-                    <td>{{ $student->dob }}</td>
-                    <td>{{ $student->course_id }}</td>
-                    <td>{{ $student->nic }}</td>
+                    <td>{{ $students->admission_no }}</td>
+                    <td>{{ $students->first_name }}</td>
+                    <td>{{ $students->last_name }}</td>
+                    <td>{{ $students->gender }}</td>
+                    <td>{{ $students->address }}</td>
+                    <td>{{ $students->dob }}</td>
+                    <td>{{ $students->course_id }}</td>
+                    <td>{{ $students->nic }}</td>
                     <td>
                     </td>
                 </tr>
-            @endforeach
+            
         </tbody>
     </table>
     <button type="button"><a href="{{ route('student.index') }}">Back</a></button>
