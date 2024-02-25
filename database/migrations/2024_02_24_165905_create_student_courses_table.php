@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('student_courses', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
+            $table->integer('student_id')->default('1');
             $table->integer('course_id');
-            $table->string('status');
-            
+            $table->string('status')->default('pending');
+
             $table->timestamps();
         });
     }

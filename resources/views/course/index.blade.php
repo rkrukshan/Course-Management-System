@@ -18,9 +18,7 @@
                         <td>{{ $course->course_index }}</td>
                         <td>{{ $course->course_order }}</td>
                         <td>
-                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-success btn-lg">
-                                <i class="fa fa-eye"></i> Show
-                            </a>
+                            
                             <a href="{{ route('course.edit', $course->id) }}" class="btn btn-info btn-lg">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
@@ -32,7 +30,7 @@
                                     <i class="fa fa-trash"></i> Delete
                                 </button>
                             </form>
-                            <a href="{{ route('studentCourse.form', $course->id) }}" class="btn btn-primary btn-lg">
+                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary btn-lg">
                                 <i class="fa fa-check"></i> Apply
                             </a>
                         </td>

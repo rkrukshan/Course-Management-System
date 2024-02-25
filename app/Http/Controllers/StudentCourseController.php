@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\StudentCourse;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class StudentCourseController extends Controller
     public function index()
     {
         $studentcourses= StudentCourse::all();
+        // return $studentcourses;
         return view("student-course.index",compact("studentcourses"));
     }
 
@@ -44,8 +46,8 @@ class StudentCourseController extends Controller
      */
     public function show(string $id)
     {
-        $StudentCourse = StudentCourse::findOrFail($id);
-        return view('student-course.show', compact('StudentCourse'));
+        $studentcourses = StudentCourse::findOrFail($id);
+        return view('student-course.show', compact('studentcourses'));
     }
 
     /**
@@ -80,4 +82,10 @@ class StudentCourseController extends Controller
         StudentCourse::findOrFail($id)->delete();
         return redirect()->route('student-course.index');
     }
+    public function course(Request $request)
+    {
+        $courses= Course::all();
+return view('course.create', compact(''));
+    }
+    
 }

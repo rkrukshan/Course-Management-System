@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Cast\String_;
 
 class CourseController extends Controller
 {
@@ -33,6 +35,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $courses = Course::findOrFail($id);
+        $studentcourses= StudentCourse::all();
         return view('course.show', compact('courses'));
     }
 
@@ -59,5 +62,32 @@ class CourseController extends Controller
     {
         Course::findOrFail($id)->delete();
         return redirect()->route('course.index');
+    }
+
+    public function apply(Request $request)
+    {
+        // return true;
+        $sc=new StudentCourse;
+        $sc->course_id=$request->id;
+        $sc->student_id=$request->student_id;
+        // return $sc;
+        StudentCourse::create($sc);
+        return redirect()->route('Course.index');
+    }
+    public function accept_approval(string $id)
+    {
+        $studentcourses = StudentCourse::findOrFail($id);
+        $studentcourses->status = 'Accepted';
+        $studentcourses->update();
+        return redirect()->route('studentCourse.index');
+    }
+
+
+    public function reject_approval(string $id)
+    {
+        $studentcourses = StudentCourse::findOrFail($id);
+        $studentcourses->status = 'Rejected';
+        $studentcourses->update();
+        return redirect()->route('studentCourse.index');
     }
 }
