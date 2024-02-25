@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
 
 class StudentCourseController extends Controller
@@ -11,7 +12,8 @@ class StudentCourseController extends Controller
      */
     public function index()
     {
-        //
+        $studentcourses= StudentCourse::all();
+        return view("student-course.index",compact("studentcourses"));
     }
 
     /**
@@ -19,7 +21,7 @@ class StudentCourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('student-course.create');
     }
 
     /**
@@ -27,7 +29,14 @@ class StudentCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'student_id' => 'required',
+            'course_id' => 'required|date',
+            'status' => 'required',
+        ]);
+
+        StudentCourse::create($request->all());
+        return redirect()->route('Student-Course.index');
     }
 
     /**
@@ -35,7 +44,8 @@ class StudentCourseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $StudentCourse = StudentCourse::findOrFail($id);
+        return view('student-course.show', compact('StudentCourse'));
     }
 
     /**
@@ -43,7 +53,8 @@ class StudentCourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $studentcourses = StudentCourse::findOrFail($id);
+        return view('student-course.edit', compact('studentcourses'));
     }
 
     /**
@@ -51,7 +62,14 @@ class StudentCourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'student_id' => 'required',
+            'course_id' => 'required|date',
+            'status' => 'required',
+        ]);
+        $studentcourses = StudentCourse::findOrFail($id);
+        $studentcourses->update($request->all());
+        return redirect()->route('student-course.index');
     }
 
     /**
@@ -59,6 +77,7 @@ class StudentCourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        StudentCourse::findOrFail($id)->delete();
+        return redirect()->route('student-course.index');
     }
 }

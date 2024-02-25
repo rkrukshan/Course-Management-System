@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('student_id');
             $table->integer('course_id');
+            $table->string('status');
             
             $table->timestamps();
         });

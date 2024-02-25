@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentCourseController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +36,10 @@ Route::get('/teacher', function () {
 
 
 route::resource('student',StudentController::class);
+route::resource('teacher',TeacherController::class);
+route::resource('course',CourseController::class);
+route::resource('studentCourse',StudentCourseController::class);
+
+
+
 

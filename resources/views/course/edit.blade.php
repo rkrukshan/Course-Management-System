@@ -2,53 +2,53 @@
 @section('body')
     <div class="container-fluid">
 
-        <form action="{{ route('student.edit') }}" method="POST">
+        <form action="{{ route('course.update',$courses) }}" method="POST" class="form">
             @csrf
-            <div class="container">
-                <h1 class="h1 text-center">Student</h1>
-                <div class="row">
-                    <div class="mb-3 col-6">
-                        <label for="admition_no" class="form-label">Admition N.O</label>
-                        <input value="old('admition_no')" type="text" class="form-control" name="admition_no">
-                        @if($errors->has('admition_no'))
-                        <span style="color: red">{{ $errors->first('admission_no') }}</span>
-                        @endif
-                    </div>
-                    <div class="mb-3 col-6">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input value="old('first_name')" type="text" class="form-control" name="first_name">
-                    </div>
-                    <div class="mb-3 col-6">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input value="old('last_name')" type="password" class="form-control" name="last_name">
-                    </div>
-
-
-                    <div class="mb-3 col-6">
-                        <label for="gender" class="form-label">Gender</label>
-                        <input value="old('gender')" type="email" class="form-control" name="gender">
-                    </div>
-
-
-                    <div class="row">
-                        <div class="mb-3 col-6">
-                            <label for="address" class="form-label">Address</label>
-                            <input value="old('address')" type="address" class="form-control" name="address">
-
-                            <div class="mb-3 col-6">
-                                <label for="dob" class="form-label">Date of Birth</label>
-                                <input value="old('dob')" type="date" class="form-control" name="" id="dob">
-                            </div>
-                            <div class="mb-3 col-6">
-                                <label for="courseid" class="form-label">Course Id</label>
-                                <input value="old('courseid')" type="text" class="form-control" name="courseid">
-                            </div>
-                            <div class="mb-3 col-6">
-                                <label for="nic" class="form-label">NIC</label>
-                                <input value="old('nic')" type="text" class="form-control" name="" id="nic">
-                            </div>
+            @method('put')
+            <table>
+        
+                    <label for="course_name">course_name</label>
+                    <input type="text" name="course_name"class="form-control" value="{{ $courses->course_name }}"><br>
+        
+                    @if($errors->has('course_name'))
+                        <div class="alert alert-danger">
+                            <strong style="color: red">
+                            <i class="fa fa-warning" style="color: #000000;"></i>&nbsp;&nbsp;&nbsp;
+                            {{ $errors->first('course_name') }}
+                            &nbsp;&nbsp;&nbsp;<i class="fa fa-warning" style="color: #000000;"></i>
+                        </strong>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        @endif
+
+                        <label for="course_index">course_index</label>
+                        <input type="text" name="course_index"class="form-control" value="{{ $courses->course_index }}"><br>
+        
+                        @if($errors->has('course_index'))
+                        <div class="alert alert-danger">
+                            <strong style="color: red">
+                            <i class="fa fa-warning" style="color: #000000;"></i>&nbsp;&nbsp;&nbsp;
+                            {{ $errors->first('course_index') }}
+                            &nbsp;&nbsp;&nbsp;<i class="fa fa-warning" style="color: #000000;"></i>
+                        </strong>
+                        </div>
+                        @endif
+
+                        <label for="course_order">course_order</label>
+                        <input type="text" name="course_order"class="form-control" value="{{ $courses->course_order }}"><br>
+
+                        @if($errors->has('course_order'))
+                        <div class="alert alert-danger">
+                            <strong style="color: red">
+                            <i class="fa fa-warning" style="color: #000000;"></i>&nbsp;&nbsp;&nbsp;
+                            {{ $errors->first('course_order') }}
+                            &nbsp;&nbsp;&nbsp;<i class="fa fa-warning" style="color: #000000;"></i>
+                        </strong>
+                        </div>
+                        @endif
+            </table>
+            <br>
+            <a class="link-light"><button type="submit" class="btn btn-success">save</button></a>
+                
         </form>
     </div>
 @endsection
