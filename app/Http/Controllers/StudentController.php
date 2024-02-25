@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $students=Student::all();
-        return view("student.index");
+        $students = Student::all();
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -21,7 +19,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view("student.create");
+        return view('student.create');
     }
 
     /**
@@ -30,17 +28,17 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'admition_no'=>'required',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'gender'=>'required',
-            'address'=>'required',
-            'dob'=>'required',
-            'course_id'=>'required',
-            'nic'=>'required',
+            'admission_no' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'dob' => 'required|date',
+            'course_id' => 'required',
+            'nic' => 'required',
         ]);
         Student::create($request->all());
-        return view('student.index');
+        return redirect()->route('student.index');
     }
 
     /**
@@ -48,8 +46,10 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        $students=Student::find($id);
-        return view('student.show', compact('students'));
+        $Students = Student::find($id);
+        $students = Student::find($id)->students; //join Student with student
+        // dd($students);
+        return view('student.show', compact('Students', 'students'));
     }
 
     /**
@@ -57,8 +57,8 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $students=Student::find($id);
-        return view('student.edit', compact('students'));
+        $Students = Student::find($id);
+        return view('student.edit', compact('Students'));
     }
 
     /**
@@ -67,18 +67,18 @@ class StudentController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'admition_no'=>'required',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'gender'=>'required',
-            'address'=>'required',
-            'dob'=>'required',
-            'course_id'=>'required',
-            'nic'=>'required',
+            'admission_no' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'dob' => 'required|date',
+            'course_id' => 'required',
+            'nic' => 'required',
         ]);
-        $students=Student::find($id);
-        $students->update($request->all());
-        return redirect()->route('student.index',compact('students'));
+        $Students = Student::find($id);
+        $Students->update($request->all());
+        return redirect()->route('student.index', compact('Students'));
     }
 
     /**
@@ -86,7 +86,7 @@ class StudentController extends Controller
      */
     public function destroy(string $id)
     {
-        Student::find($id)->delete();
+        Student::destroy($id);
         return redirect()->route('student.index');
     }
 }

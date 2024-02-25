@@ -11,7 +11,7 @@
                         <label for="admition_no" class="form-label">Admition N.O</label>
                         <input value="old('admition_no')" type="text" class="form-control" name="admition_no">
                         @if($errors->has('admition_no'))
-                        <span style="color: red">{{ $errors->first('admition_no') }}</span>
+                        <span style="color: red">{{ $errors->first('admission_no') }}</span>
                         @endif
                     </div>
                     <div class="mb-3 col-6">
