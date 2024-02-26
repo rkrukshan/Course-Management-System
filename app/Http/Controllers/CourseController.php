@@ -18,7 +18,6 @@ class CourseController extends Controller
     {
         return view('course.create');
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -30,21 +29,16 @@ class CourseController extends Controller
         Course::create($request->all());
         return redirect()->route('course.index');
     }
-
     public function show($id)
     {
         $course = Course::findOrFail($id);
-        // Assuming you want to fetch related student courses for this specific course
-        $studentCourses = StudentCourse::where('course_id', $id)->get();
-        return view('course.show', compact('course', 'studentCourses'));
+        return view('course.show', compact('course'));
     }
-
     public function edit($id)
     {
         $course = Course::findOrFail($id);
         return view('course.edit', compact('course'));
     }
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -63,35 +57,31 @@ class CourseController extends Controller
         Course::findOrFail($id)->delete();
         return redirect()->route('course.index');
     }
-
     public function apply(Request $request)
-    {
-        $request->validate([
-            'course_id' => 'required',
-            'student_id' => 'required',
-        ]);
-
-        $studentCourse = new StudentCourse;
-        $studentCourse->course_id = $request->course_id;
-        $studentCourse->student_id = $request->student_id;
-        $studentCourse->save();
-
-        return redirect()->route('course.index');
-    }
-
+{
+    $request->validate([
+        'course_id' => 'required',
+        'student_id' => 'required',
+    ]);
+    $studentCourse = new StudentCourse;
+    $studentCourse->course_id = $request->course_id;
+    $studentCourse->student_id = $request->student_id;
+    $studentCourse->save();
+    return redirect()->route('course.index');
+}
     public function accept_approval($id)
     {
-        $studentCourse = StudentCourse::findOrFail($id);
-        $studentCourse->status = 'Accepted';
-        $studentCourse->save();
+        $studentcourse = StudentCourse::findOrFail($id);
+        $studentcourse->status = 'Accepted';
+        $studentcourse->save();
         return redirect()->route('studentCourse.index');
     }
 
     public function reject_approval($id)
     {
-        $studentCourse = StudentCourse::findOrFail($id);
-        $studentCourse->status = 'Rejected';
-        $studentCourse->save();
+        $studentcourse = StudentCourse::findOrFail($id);
+        $studentcourse->status = 'Rejected';
+        $studentcourse->save();
         return redirect()->route('studentCourse.index');
     }
 }

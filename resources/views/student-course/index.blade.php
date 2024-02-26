@@ -1,11 +1,9 @@
 @extends('layout.front')
 @section('body')
     <section class="bg-dark">
-        <a href="{{ route('studentCourse.create') }}" class="btn btn-primary btn-lg">Create</a>
         <table class="mt-24 table">
             <thead>
                 <tr>
-
                     <th>student id</th>
                     <th>course id</th>
                     <th>status</th>

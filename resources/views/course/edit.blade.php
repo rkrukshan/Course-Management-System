@@ -2,13 +2,13 @@
 @section('body')
     <div class="container-fluid">
 
-        <form action="{{ route('course.update',$courses) }}" method="POST" class="form">
+        <form action="{{ route('course.update',$course) }}" method="POST" class="form">
             @csrf
             @method('put')
             <table>
         
                     <label for="course_name">course_name</label>
-                    <input type="text" name="course_name"class="form-control" value="{{ $courses->course_name }}"><br>
+                    <input type="text" name="course_name"class="form-control" value="{{ $course->course_name }}"><br>
         
                     @if($errors->has('course_name'))
                         <div class="alert alert-danger">
@@ -21,7 +21,7 @@
                         @endif
 
                         <label for="course_index">course_index</label>
-                        <input type="text" name="course_index"class="form-control" value="{{ $courses->course_index }}"><br>
+                        <input type="text" name="course_index"class="form-control" value="{{ $course->course_index }}"><br>
         
                         @if($errors->has('course_index'))
                         <div class="alert alert-danger">
@@ -34,7 +34,7 @@
                         @endif
 
                         <label for="course_order">course_order</label>
-                        <input type="text" name="course_order"class="form-control" value="{{ $courses->course_order }}"><br>
+                        <input type="text" name="course_order"class="form-control" value="{{ $course->course_order }}"><br>
 
                         @if($errors->has('course_order'))
                         <div class="alert alert-danger">
