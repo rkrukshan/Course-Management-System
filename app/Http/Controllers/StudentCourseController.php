@@ -13,9 +13,9 @@ class StudentCourseController extends Controller
      */
     public function index()
     {
-        $studentcourses = StudentCourse::all();
+        $studentcourses= StudentCourse::all();
         // return $studentcourses;
-        return view("student-course.index", compact("studentcourses"));
+        return view("student-course.index",compact("studentcourses"));
     }
 
     /**
@@ -30,13 +30,12 @@ class StudentCourseController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'student_id' => 'required',
-            'course_id' => 'required|date',
-            'status' => 'required',
-        ]);
-
+{
+    $request->validate([
+        'student_id' => 'required',
+        'course_id' => 'required', // Removed |date validation, assuming it's not necessary
+        'status' => 'required',
+    ]);
         StudentCourse::create($request->all());
         return redirect()->route('Student-Course.index');
     }
@@ -84,7 +83,8 @@ class StudentCourseController extends Controller
     }
     public function course(Request $request)
     {
-        $courses = Course::all();
-        return view('course.create', compact(''));
+        $courses= Course::all();
+return view('course.create', compact(''));
     }
+    
 }
