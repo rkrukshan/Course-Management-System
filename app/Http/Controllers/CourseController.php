@@ -25,7 +25,6 @@ class CourseController extends Controller
             'course_order' => 'required',
             'course_index' => 'required',
         ]);
-
         Course::create($request->all());
         return redirect()->route('course.index');
     }
@@ -67,7 +66,8 @@ class CourseController extends Controller
     $studentCourse->course_id = $request->course_id;
     $studentCourse->student_id = $request->student_id;
     $studentCourse->save();
-    return redirect()->route('course.index');
+    return view('course.index');
+
 }
     public function accept_approval($id)
     {
